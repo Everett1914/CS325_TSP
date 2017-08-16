@@ -62,7 +62,7 @@ def nearestNeighbor(cityArray, startCity):
 def Two_OPT(cityArray, tour):
     iter = 0
     while True:
-        iter+=1
+        #iter+=1
         minchange = 0
         swap = False
         for i in range(len(tour)-2):
@@ -80,10 +80,10 @@ def Two_OPT(cityArray, tour):
             temp = tour[minI+1]
             tour[minI+1] = tour[minJ]
             tour[minJ] = temp
-        # if minchange >= 0:  #if no changes made, break out of loop
-        #     break
-        if iter > 2:
+        if minchange >= 0:  #if no changes made, break out of loop
             break
+        #if iter > 200:
+            #break
     return tour
 
 #compute tour distance
@@ -103,7 +103,7 @@ def main():
     if n <= 100:
         iterations = len(cityArray)
     elif 100 < n and n <= 500:
-        iterations = len(cityArray)*(3/4)
+        iterations = 10 #len(cityArray)*(3/4)
     elif 500 < n and n <= 1000:
         iterations = len(cityArray)*(1/2)
     elif 1000 < n and n <= 2000:
