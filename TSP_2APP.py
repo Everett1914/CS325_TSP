@@ -1,6 +1,7 @@
 #Project Group 16
 #12AUG17 as of 121632JUL17
 #TSP
+#2-app algorithm for the traveling sales person
 
 import sys
 import math

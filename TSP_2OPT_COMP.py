@@ -60,8 +60,11 @@ def nearestNeighbor(cityArray, startCity):
     return tourArray
 
 #optimizes best path from nearestNeighbor using 2-OPT algorithm
-def Two_OPT(cityArray, tour):
+def Two_OPT(cityArray, tour,i):
+    g=i
+    iter = 0
     while True:
+        iter+=1
         minchange = 0
         swap = False
         for i in range(len(tour)-2):
@@ -79,8 +82,12 @@ def Two_OPT(cityArray, tour):
             temp = tour[minI+1]
             tour[minI+1] = tour[minJ]
             tour[minJ] = temp
-        if minchange >= 0:  #if no changes made, break out of loop
-            break
+        if g == 249:
+            if minchange >= 0:  #if no changes made, break out of loop
+                break
+        else:
+            if i > iter:
+                break
     return tour
 
 #compute tour distance
@@ -99,14 +106,22 @@ def main():
     n = len(cityArray)
     if n <= 100:
         iterations = len(cityArray)
-    elif 100 < n and n <= 500:
+        i=250
+    elif 100 < n and n <= 400:
         iterations = len(cityArray)*(3/4)
-    elif 500 < n and n <= 1000:
-        iterations = len(cityArray)*(1/2)
-    elif 1000 < n and n <= 2000:
+        i=249
+    elif 400 < n and n <= 500:
         iterations = len(cityArray)*(1/4)
+        i=30
+    elif 500 < n and n <= 1000:
+        iterations = 15
+        i=15
+    elif 1000 < n and n <= 2000:
+        iterations = 2
+        i=2
     else:
         iterations = 1
+        i=1
     start = time.perf_counter()
     for p in range(int(iterations)):  #create tours for all possible start points
         initTour = nearestNeighbor(cityArray, p)
@@ -114,10 +129,10 @@ def main():
         if sumDist <= finalDistance:
             finalDistance = sumDist
             finalTour = initTour  #select the best tour from nearestNeighbor
-    optTour = Two_OPT(cityArray, finalTour)
+    optTour = Two_OPT(cityArray, finalTour, i)
     optDist = tourDistance(cityArray, optTour)
     end = time.perf_counter()
-    elapsed = end - start #amount of time to execute insertion sort
+    elapsed = end - start #amount of time to execute insertion sort    elapsed = end - start #amount of time to execute insertion sort
     optTour.insert(0,optDist)
     print(elapsed)
     writeFile(fileName,optTour)
