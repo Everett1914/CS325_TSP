@@ -30,7 +30,7 @@ def readFile(fileName):
 
 #write file
 def writeFile(fileName, array):
-    file = fileName + 'TEST' + '.txt' + '.tour'
+    file = fileName + '.txt' + '.tour'
     with open(file, 'w') as outPutFile:
         for val in array:
             num = str(val)
