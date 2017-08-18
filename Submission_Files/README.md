@@ -1,5 +1,6 @@
-#Group 16
-#CS325 TSP Competition
+Group 16
+SU17
+CS325 TSP Competition
 These two programs use the 2-OPT algorithm to find a near optimal solution to the
 traveling salesperson problem.  The first program was used to generate tours for
 the example problems with an unlimited time limit.  The second program was used
