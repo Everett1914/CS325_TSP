@@ -111,7 +111,7 @@ def main():
         iterations = len(cityArray)*(3/4)
         i=249
     elif 400 < n and n <= 500:
-        iterations = len(cityArray)*(1/4)
+        iterations = 20#len(cityArray)*(1/4)
         i=30
     elif 500 < n and n <= 1000:
         iterations = 15
